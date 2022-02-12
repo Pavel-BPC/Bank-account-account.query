@@ -2,14 +2,25 @@ server:
   port: 5001
 spring:
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+  #    postgres
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
     show-sql: true
     hibernate:
       ddl-auto: update
+  #    mysql
+  #    database-platform: org.hibernate.dialect.MySQL8Dialect
+  #    show-sql: true
+  #    hibernate:
+  #      ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost:3306/bankAccount?createDatabaseIfNotExist=true
-    username: root
+# postgres
+    url: jdbc:postgresql://localhost:5432/bankAccount
+    username: postgres
     password: techbankNet
+# mysql
+#  url: jdbc:mysql://localhost:3306/bankAccount?createDatabaseIfNotExist=true
+#    username: root
+#    password: techbankNet
   kafka:
     listener:
       ack-mode: manual_immediate
@@ -24,3 +35,9 @@ spring:
           json:
             trusted:
               packages: '*'
+#logging:
+#  level:
+#    org.springframework.web: DEBUG
+#    guru.springframework.controllers: DEBUG
+#    org.hibernate: DEBUG
+#    org: INFO
